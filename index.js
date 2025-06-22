@@ -16,7 +16,7 @@ app.use(express.json());
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "*", // Or use your deployed frontend domain
+    origin: "https://anandamwellness-xi.vercel.app", // Or use your deployed frontend domain
     methods: ["GET", "POST"],
   },
 });
