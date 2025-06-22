@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-import { stringifyResumeDataCache } from "next/dist/server/resume-data-cache/resume-data-cache";
 const { Schema, model } = mongoose;
 
 
