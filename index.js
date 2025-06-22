@@ -1,26 +1,30 @@
-const express = require("express");
-const http = require("http");
-const mongoose = require("mongoose");
-const cors = require("cors");
-const { Server } = require("socket.io");
-require("dotenv").config();
+import express from "express";
+import http from "http";
+import mongoose from "mongoose";
+import cors from "cors";
+import { Server } from "socket.io";
+import dotenv from "dotenv";
 
-const Message = require("./models/Message");
-const User = require("./models/User");
-const Doctor = require("./models/Doctor");
+import Message from "./models/Message.js";
+import User from "./models/User.js";
+import Doctor from "./models/Doctor.js";
+
+dotenv.config();
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
 const server = http.createServer(app);
+
 const io = new Server(server, {
   cors: {
-    origin: "https://anandamwellness-xi.vercel.app", // Or use your deployed frontend domain
+    origin: "https://anandamwellness-xi.vercel.app", // 👈 Change this to your deployed frontend domain for security
     methods: ["GET", "POST"],
   },
 });
 
+// 🌐 Connect MongoDB
 mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
